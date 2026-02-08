@@ -1,4 +1,4 @@
-# Simple Note Web
+# KamoSimpleNote Web
 
 Supabase と Dexie.js を活用した、モダンで高速なノート管理 Web アプリケーションです。オフラインでも動作し、クラウドとリアルタイムに同期します。
 
@@ -26,7 +26,7 @@ Supabase と Dexie.js を活用した、モダンで高速なノート管理 Web
 
 ```bash
 git clone <repository-url>
-cd simple-note-web
+cd kamo-simple-note-web
 npm install
 ```
 

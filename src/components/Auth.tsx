@@ -35,7 +35,7 @@ export const Auth: React.FC = () => {
             {isSignUp ? 'アカウント作成' : 'おかえりなさい'}
           </h1>
           <p className="text-[var(--text-muted)]">
-            {isSignUp ? 'Simple Noteを使い始めましょう' : 'ノートを同期するにはログインしてください'}
+            {isSignUp ? 'KamoSimpleNoteを使い始めましょう' : 'ノートを同期するにはログインしてください'}
           </p>
         </div>
 
