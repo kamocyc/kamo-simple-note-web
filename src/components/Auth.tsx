@@ -25,23 +25,23 @@ export const Auth: React.FC = () => {
   };
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen bg-slate-50 dark:bg-slate-950 px-4">
+    <div className="flex items-center justify-center w-full min-h-screen bg-[var(--bg-main)] px-4">
       <div className="w-full max-w-md p-8 glass rounded-2xl shadow-xl animate-fade-in">
         <div className="flex flex-col items-center mb-8">
-          <div className="w-16 h-16 bg-indigo-600 rounded-2xl flex items-center justify-center mb-4 shadow-lg">
+          <div className="w-16 h-16 bg-[var(--primary)] rounded-2xl flex items-center justify-center mb-4 shadow-lg">
             <LogIn className="text-white" size={32} />
           </div>
-          <h1 className="text-3xl font-bold text-slate-900 dark:text-white mb-2">
+          <h1 className="text-3xl font-bold text-[var(--text-main)] mb-2">
             {isSignUp ? 'アカウント作成' : 'おかえりなさい'}
           </h1>
-          <p className="text-slate-500 dark:text-slate-400">
+          <p className="text-[var(--text-muted)]">
             {isSignUp ? 'Simple Noteを使い始めましょう' : 'ノートを同期するにはログインしてください'}
           </p>
         </div>
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">メールアドレス</label>
+            <label className="block text-sm font-medium text-[var(--text-main)] mb-1">メールアドレス</label>
             <input
               type="email"
               className="input text-lg"
@@ -52,11 +52,11 @@ export const Auth: React.FC = () => {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium text-slate-700 dark:text-slate-300 mb-1">パスワード</label>
+            <label className="block text-sm font-medium text-[var(--text-main)] mb-1">パスワード</label>
             <input
               type="password"
               className="input text-lg"
-              placeholder="••••••••"
+              placeholder=""
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
@@ -93,7 +93,7 @@ export const Auth: React.FC = () => {
         <div className="mt-6 text-center">
           <button
             onClick={() => setIsSignUp(!isSignUp)}
-            className="text-sm font-medium text-indigo-600 hover:text-indigo-500 dark:text-indigo-400"
+            className="text-sm font-medium text-[var(--primary)] hover:text-[var(--primary-hover)]"
           >
             {isSignUp ? 'すでにアカウントをお持ちですか？ ログイン' : '新しくアカウントを作成する'}
           </button>

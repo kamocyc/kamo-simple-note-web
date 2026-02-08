@@ -42,7 +42,7 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({ note }) => {
 
   if (!note) {
     return (
-      <div className="flex-1 flex flex-col items-center justify-center p-8 text-slate-400 animate-fade-in text-center">
+      <div className="flex-1 flex flex-col items-center justify-center p-8 text-[var(--text-muted)] animate-fade-in text-center">
         <StickyNote size={64} className="mb-4 opacity-20" />
         <h2 className="text-xl font-medium mb-2">ノートが選択されていません</h2>
         <p>左側のリストからノートを選択するか、新しいノートを作成してください。</p>
@@ -51,11 +51,11 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({ note }) => {
   }
 
   return (
-    <div className="flex-1 flex flex-col h-full bg-white dark:bg-slate-900 animate-fade-in relative">
-      <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center justify-between sticky top-0 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md z-10">
+    <div className="flex-1 flex flex-col h-full bg-[var(--bg-main)] animate-fade-in relative">
+      <div className="p-4 border-b border-[var(--border)] flex items-center justify-between sticky top-0 bg-[var(--bg-main)]/80 backdrop-blur-md z-10">
         <div className="flex items-center gap-3">
           {saving ? (
-            <div className="flex items-center gap-1 text-xs text-slate-400">
+            <div className="flex items-center gap-1 text-xs text-[var(--text-muted)]">
               <Loader2 size={14} className="animate-spin" />
               保存中...
             </div>
@@ -73,14 +73,14 @@ export const NoteEditor: React.FC<NoteEditorProps> = ({ note }) => {
         </div>
         <button
           onClick={handleDelete}
-          className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
+          className="p-2 text-[var(--text-muted)] hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-all"
         >
           <Trash2 size={20} />
         </button>
       </div>
 
       <textarea
-        className="flex-1 p-8 text-lg bg-transparent border-none outline-none resize-none leading-relaxed text-slate-800 dark:text-slate-200"
+        className="flex-1 p-8 text-xl bg-transparent border-none outline-none resize-none leading-relaxed text-[var(--text-main)]"
         placeholder="ここに入力してください..."
         value={content}
         onChange={handleChange}

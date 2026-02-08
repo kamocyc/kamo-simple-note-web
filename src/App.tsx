@@ -36,8 +36,8 @@ function App() {
 
   if (loading) {
     return (
-      <div className="w-full h-full flex items-center justify-center bg-slate-50 dark:bg-slate-950">
-        <Loader2 className="animate-spin text-indigo-600" size={48} />
+      <div className="w-full h-full flex items-center justify-center bg-[var(--bg-main)]">
+        <Loader2 className="animate-spin text-[var(--primary)]" size={48} />
       </div>
     );
   }
@@ -47,7 +47,7 @@ function App() {
   }
 
   return (
-    <div className="flex w-full h-full bg-slate-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100">
+    <div className="flex w-full h-full bg-[var(--bg-main)] text-[var(--text-main)]">
       <NoteList
         selectedNoteId={selectedNote?.id || null}
         onSelectNote={setSelectedNote}
@@ -55,12 +55,12 @@ function App() {
       />
 
       <main className="flex-1 flex flex-col min-w-0">
-        <header className="h-14 border-b border-slate-200 dark:border-slate-800 flex items-center justify-end px-4 gap-2 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm">
+        <header className="h-14 border-b border-[var(--border)] flex items-center justify-end px-4 gap-2 bg-[var(--bg-sidebar)]/50 backdrop-blur-sm">
           <div className="flex items-center gap-3 px-2">
-            <span className="text-xs text-slate-500 hidden md:block">{session.user.email}</span>
+            <span className="text-xs text-[var(--text-muted)] hidden md:block">{session.user.email}</span>
             <button
               onClick={() => supabase.auth.signOut()}
-              className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-slate-500 hover:text-red-500 rounded-lg transition-all"
+              className="p-2 hover:bg-red-50 dark:hover:bg-red-900/20 text-[var(--text-muted)] hover:text-red-500 rounded-lg transition-all"
               title="ログアウト"
             >
               <LogOut size={20} />
