@@ -58,45 +58,23 @@ create table public.notes (
   is_deleted boolean default false,
   server_updated_at timestamp with time zone default now()
 );
-
--- server_updated_at を自動更新するトリガー（オプション）
-create or replace function update_server_updated_at()
-returns trigger as $$
-begin
-  new.server_updated_at = now();
-  return new;
-end;
-$$ language plpgsql;
-
-create trigger tr_update_server_updated_at
-before update on public.notes
-for each row execute function update_server_updated_at();
 ```
+
+server_updated_atは使っていない気がする。
 
 #### RLS ポリシーの設定
 
 ```sql
+-- Row Level Security (RLS) の有効化
 alter table public.notes enable row level security;
 
--- 自分のノートのみ表示可能
-create policy "Users can view their own notes"
-on public.notes for select
-using ( auth.uid() = user_id );
+-- ユーザーが自分のデータのみ操作できるポリシー
+create policy "Users can manage their own notes"
+  on public.notes
+  for all
+  using (auth.uid() = user_id)
+  with check (auth.uid() = user_id);
 
--- 自分のノートのみ挿入可能
-create policy "Users can insert their own notes"
-on public.notes for insert
-with check ( auth.uid() = user_id );
-
--- 自分のノートのみ更新可能
-create policy "Users can update their own notes"
-on public.notes for update
-using ( auth.uid() = user_id );
-
--- 自分のノートのみ削除可能
-create policy "Users can delete their own notes"
-on public.notes for delete
-using ( auth.uid() = user_id );
 ```
 
 ### 4. アプリケーションの起動
